@@ -741,7 +741,10 @@ footer.site { max-width: 760px; margin: 40px auto 0; font-size: 0.8rem; color: v
 
   var params = new URLSearchParams(location.search);
   // Personal links: youroptions.homes/?p=<Follow Up Boss person id>  •  campaign codes: ?c=<mailer code>
-  if (params.get("p")) save("yo_person", params.get("p"));
+  // ?p=clear forgets any personal link on this device (use after testing someone's link yourself).
+  if (params.get("p") === "clear") {
+    try { ["yo_person", "yo_campaign", "yo_history", "yo_name"].forEach(function (k) { localStorage.removeItem(k); }); sessionStorage.removeItem("yo_sent"); } catch (e) {}
+  } else if (params.get("p")) save("yo_person", params.get("p"));
   if (params.get("c")) save("yo_campaign", params.get("c"));
   var person = load("yo_person", null);
   var campaign = load("yo_campaign", null);
