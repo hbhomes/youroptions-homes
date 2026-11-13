@@ -21,5 +21,5 @@
 
 Set the environment variable `FUB_API_KEY` in Netlify (Project configuration → Environment variables), then redeploy.
 
-- **Send me more information** and **Have Marc call me** create a *General Inquiry* in Follow Up Boss, tagged `YourOptions.homes`, with the pages the visitor read.
-- Visitors arriving on a personal link get a timeline note for each part or topic they open.
+- **Send me more information** and **Have Marc call me** create a *Seller Inquiry* in Follow Up Boss (source `YourOptions.homes`), tagged `YourOptions.homes`, `YO Topic: …`, `YO Wants: …` and `YO Mailer: …`, with the pages the visitor read.
+- Visitors arriving on a personal link show up under **Website Activity** on their contact (a *Viewed Page* event per part or topic).

@@ -4,10 +4,11 @@
 // Without it, activity is only written to the Netlify function log.
 //
 // What goes to Follow Up Boss:
-//   • "Send me more information" and "Have Marc call me" → a General Inquiry event.
-//     Follow Up Boss creates or updates the contact and notifies Marc.
-//   • Page views from a personal link (youroptions.homes/?p=<FUB person id>) → a note
-//     on that contact's timeline, e.g. "Opened Part 4: Capital gains".
+//   • "Send me more information" and "Have Marc call me" → a Seller Inquiry event, source
+//     YourOptions.homes, tagged YourOptions.homes / YO Topic: … / YO Wants: … / YO Mailer: …
+//     Follow Up Boss creates or updates the contact, runs the source's Lead Flow, and notifies Marc.
+//   • Page views from a personal link (youroptions.homes/?p=<FUB person id>) → a Viewed Page
+//     event, shown under Website Activity on that contact.
 //   • Page views from anonymous visitors are logged only; their reading history is
 //     attached to any request they later send.
 
@@ -40,15 +41,6 @@ function contactFields(contact) {
   return out;
 }
 
-async function addNote(key, personId, subject, body) {
-  const r = await fetch(`${FUB}/notes`, {
-    method: "POST",
-    headers: fubHeaders(key),
-    body: JSON.stringify({ personId: Number(personId), subject, body, isHtml: false }),
-  });
-  if (!r.ok) console.error("FUB note failed", r.status, await r.text());
-}
-
 export default async (req) => {
   if (req.method !== "POST") return new Response("Method not allowed", { status: 405 });
 
@@ -69,9 +61,36 @@ export default async (req) => {
   console.log(JSON.stringify({ type, page, personId, campaign }));
   if (!key) return new Response(null, { status: 204 });
 
+  const slug = /^[a-z0-9-]{1,40}$/.test(String(d.slug || "")) ? d.slug : "";
+  const pageUrl = `https://youroptions.homes/${slug ? "#" + slug : ""}`;
+  // Lets Follow Up Boss report leads by mailer: Source = YourOptions.homes, Medium = direct mail or website.
+  const campaignInfo = { source: SITE, medium: campaign ? "direct mail" : "website", ...(campaign ? { campaign } : {}) };
+
+  const postEvent = async (input) => {
+    const { fallbackPerson, ...event } = input;
+    let r = await fetch(`${FUB}/events`, { method: "POST", headers: fubHeaders(key), body: JSON.stringify(event) });
+    // A personal link with an unknown or deleted contact id: send again without it so the lead isn't lost.
+    if (r.status === 404 && event.person && event.person.id && fallbackPerson) {
+      event.person = fallbackPerson;
+      r = await fetch(`${FUB}/events`, { method: "POST", headers: fubHeaders(key), body: JSON.stringify(event) });
+    }
+    if (!r.ok) console.error("FUB event failed", r.status, await r.text());
+  };
+
   try {
     if (type === "view") {
-      if (personId) await addNote(key, personId, `${SITE}: page viewed`, `Opened ${page}`);
+      // Known contacts (personal link): shows under Website Activity on their Follow Up Boss profile.
+      if (personId) {
+        await postEvent({
+          source: SITE,
+          system: SYSTEM,
+          type: "Viewed Page",
+          pageTitle: `${SITE}: ${page}`,
+          pageUrl,
+          campaign: campaignInfo,
+          person: { id: Number(personId) },
+        });
+      }
       return new Response(null, { status: 204 });
     }
 
@@ -82,37 +101,43 @@ export default async (req) => {
       const how = clip(d.how, 30);
       if (!name || !contact) return new Response("Missing name or contact", { status: 400 });
 
-      const headline =
+      const Topic = topic ? topic.charAt(0).toUpperCase() + topic.slice(1) : "";
+      const ask =
         type === "callback"
-          ? `${name} asked Marc to call them while reading ${page}.`
-          : `${name} wants more information about ${topic}, by ${how}.`;
+          ? `Asked Marc to CALL THEM while reading ${page}.`
+          : `Wants more information about ${topic}. Send by ${how}.`;
       const message = [
-        headline,
+        ask,
         `Contact given: ${contact}`,
-        campaign ? `Mailer code: ${campaign}` : "",
-        history.length ? `Pages read on ${SITE}: ${history.join(" → ")}` : "",
+        campaign ? `Came from mailer: ${campaign}` : "Came from: the website (no mailer code)",
+        history.length ? `Pages read: ${history.join(" → ")}` : "",
       ]
         .filter(Boolean)
         .join("\n");
 
+      // Tags: one master tag for every YourOptions lead, then what they asked about and how to follow up.
       const tags = ["YourOptions.homes"];
-      if (topic) tags.push(`YO: ${topic}`);
-      if (type === "callback") tags.push("YO: call request");
+      if (Topic) tags.push(`YO Topic: ${Topic}`);
+      tags.push(type === "callback" ? "YO Wants: Call back" : `YO Wants: ${how.charAt(0).toUpperCase() + how.slice(1)}`);
+      if (campaign) tags.push(`YO Mailer: ${campaign}`);
 
-      const event = {
+      const newPerson = { ...splitName(name), ...contactFields(contact), source: SITE, sourceUrl: pageUrl, tags };
+      // Personal link: attach to the existing contact without overwriting their name or original source
+      // (a relative may fill in the form). If that contact no longer exists, create a new lead instead.
+      const person = personId ? { id: Number(personId), tags } : newPerson;
+
+      await postEvent({
         source: SITE,
         system: SYSTEM,
-        type: "General Inquiry",
+        // Seller Inquiry: these are homeowners, so Follow Up Boss files them as sellers, not buyers.
+        type: "Seller Inquiry",
         message,
-        description: headline,
-        pageTitle: page,
-        pageUrl: "https://youroptions.homes/",
-        person: { ...splitName(name), ...contactFields(contact), tags },
-      };
-
-      const r = await fetch(`${FUB}/events`, { method: "POST", headers: fubHeaders(key), body: JSON.stringify(event) });
-      if (!r.ok) console.error("FUB event failed", r.status, await r.text());
-      if (personId) await addNote(key, personId, `${SITE}: request`, message);
+        pageTitle: `${SITE}: ${page}`,
+        pageUrl,
+        campaign: campaignInfo,
+        person,
+        fallbackPerson: personId ? newPerson : undefined,
+      });
       return new Response(null, { status: 204 });
     }
 
