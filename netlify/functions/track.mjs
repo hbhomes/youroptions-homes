@@ -172,7 +172,7 @@ export default async (req) => {
         if (id) {
           // Segment tag, added after the lead exists so "Tag Added" automations fire reliably.
           // New leads → the YO nurture emails. Existing contacts → no automated emails, only Marc's task.
-          const segment = isNew ? "YO New lead" : "YO Existing contact";
+          const segment = isNew ? "YO New Lead" : "YO Existing Contact";
           const t = await api(`/people/${id}?mergeTags=true`, "PUT", { tags: [segment] });
           if (!t.ok) console.error("FUB tag failed", t.status, await t.text());
 
