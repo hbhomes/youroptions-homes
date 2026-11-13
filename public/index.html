@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Home, Your Options | A guide for long-time Huntington Beach homeowners</title>
+<meta name="description" content="A plain-English planning guide for long-time Huntington Beach homeowners: five paths to consider, Proposition 19, capital gains, and passing your home to family. From Marc Samulewicz, hb.homes.">
+<meta property="og:title" content="Your Home, Your Options">
+<meta property="og:description" content="A plain-English planning guide for long-time Huntington Beach homeowners.">
+<meta property="og:image" content="https://youroptions.homes/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: one calm reading column, oversized type and buttons for readers in their 70s–90s; brand slate + orange from the hb.homes guide; a persistent "Call Marc" bar. */
+:root {
+  --bg: #F5F7F9;
+  --surface: #FFFFFF;
+  --tint: #EEF2F5;
+  --line: #D3DCE4;
+  --fg: #1A1A1A;
+  --muted: #555F69;
+  --slate: #6A8399;
+  --slate-ink: #4B6176;
+  --orange: #F16623;
+  --action: #F16623;
+  --action-fg: #FFFFFF;
+  --ok-bg: #E7F3EA;
+  --ok-fg: #1F5B2E;
+  --preview-bg: #2E3740;
+  --preview-fg: #F5F7F9;
+  --font-display: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+  --font-body: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+  --band: #1F1F1F;
+  --band-fg: #FFFFFF;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151B20; --surface: #1D252C; --tint: #24303A; --line: #34424E;
+    --fg: #E7EDF2; --muted: #AAB8C4; --slate: #93AABE; --slate-ink: #B4C6D5;
+    --orange: #F16623; --action: #F16623; --action-fg: #FFFFFF; --band: #0E1215; --band-fg: #FFFFFF;
+    --ok-bg: #1C3324; --ok-fg: #A8DDB5; --preview-bg: #0E1215; --preview-fg: #E7EDF2;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151B20; --surface: #1D252C; --tint: #24303A; --line: #34424E;
+  --fg: #E7EDF2; --muted: #AAB8C4; --slate: #93AABE; --slate-ink: #B4C6D5;
+  --orange: #F16623; --action: #F16623; --action-fg: #FFFFFF; --band: #0E1215; --band-fg: #FFFFFF;
+  --ok-bg: #1C3324; --ok-fg: #A8DDB5; --preview-bg: #0E1215; --preview-fg: #E7EDF2;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { padding-top: env(safe-area-inset-top, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-bottom: 140px;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+h1, h2, h3 { font-family: var(--font-display); color: var(--fg); text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: 2.1rem; font-weight: 700; }
+h2 { font-size: 1.55rem; font-weight: 600; }
+h3 { font-size: 1.2rem; font-weight: 600; }
+p { margin: 0; }
+a { color: var(--slate-ink); }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+
+.preview-strip {
+  margin: 12px auto 0; max-width: 760px;
+  background: var(--preview-bg); color: var(--preview-fg);
+  font-size: 0.8rem; line-height: 1.4; border-radius: 10px; padding: 10px 14px;
+}
+.preview-strip b { color: var(--orange); }
+
+header.site {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  max-width: 760px; margin: 12px auto 0;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 4px;
+  display: flex; align-items: center; gap: 14px; padding: 10px 14px;
+}
+.logo { width: 52px; height: 52px; background: #FFFFFF; border-radius: 10px; padding: 4px; flex: none; display: grid; place-items: center; }
+.logo img { width: 100%; height: auto; display: block; }
+.brand { min-width: 0; flex: 1; }
+.brand .name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; line-height: 1.15; }
+.brand .by { font-size: 0.78rem; color: var(--muted); line-height: 1.3; }
+.call-top {
+  flex: none; text-decoration: none; background: var(--action); color: var(--action-fg);
+  font-family: var(--font-display); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: .08em;
+  padding: 10px 14px; border-radius: 2px; line-height: 1.2; text-align: center;
+}
+.call-top small { display: block; font-weight: 500; font-size: 0.8rem; letter-spacing: .02em; text-transform: none; opacity: .95; }
+
+main { max-width: 760px; margin: 0 auto; }
+nav.hbnav { max-width: 760px; margin: 10px auto 0; display: flex; flex-wrap: wrap; gap: 6px 22px; justify-content: center; }
+nav.hbnav a { font-family: var(--font-display); font-weight: 600; font-size: 0.78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--fg); text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; }
+nav.hbnav a:hover, nav.hbnav a[aria-current] { border-bottom-color: var(--orange); }
+.hb-link { display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; color: var(--fg); background: var(--tint); border: 1px solid var(--line); padding: 14px 18px; font-weight: 600; }
+.hb-link span.go { flex: none; font-family: var(--font-display); font-size: 0.78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
+.hb-link:hover { border-color: var(--orange); }
+.view { display: flex; flex-direction: column; gap: 28px; padding-top: 28px; }
+
+.eyebrow { font-family: var(--font-display); font-weight: 600; font-size: 0.85rem; letter-spacing: .14em; text-transform: uppercase; color: var(--slate-ink); }
+.progress { display: flex; gap: 6px; margin-top: 10px; }
+.progress span { height: 8px; flex: 1; border-radius: 4px; background: var(--line); }
+.progress span.on { background: var(--orange); }
+.lede { font-size: 1.15rem; color: var(--fg); }
+.intro { display: flex; flex-direction: column; gap: 14px; }
+
+.reassure { background: var(--tint); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+
+.paths { display: flex; flex-direction: column; gap: 18px; }
+.path { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 14px; }
+.path-head { display: flex; gap: 14px; align-items: center; }
+.path-num { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--slate); color: #FFFFFF; font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; display: grid; place-items: center; }
+.label { font-family: var(--font-display); font-weight: 600; color: var(--slate-ink); font-size: 0.95rem; display: block; margin-bottom: 2px; }
+
+.term {
+  color: var(--fg); font-weight: 700; text-decoration: underline; text-decoration-color: var(--orange);
+  text-decoration-thickness: 3px; text-underline-offset: 4px; cursor: pointer;
+}
+.term::after { content: " ›"; color: var(--orange); font-weight: 700; text-decoration: none; display: inline-block; }
+.term:hover { background: var(--tint); border-radius: 4px; }
+.tip { font-size: 0.9rem; color: var(--muted); display: flex; gap: 8px; align-items: baseline; }
+.tip .sample { font-weight: 700; color: var(--fg); text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+
+.teaser { background: var(--band); color: var(--band-fg); border-radius: 18px; padding: 26px 24px; display: flex; flex-direction: column; gap: 14px; }
+.teaser h2 { color: var(--band-fg); }
+.teaser .eyebrow { color: var(--orange); }
+.teaser ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 4px; }
+.btn {
+  appearance: none; border: 0; cursor: pointer; text-decoration: none; text-align: center;
+  font-family: var(--font-display); font-weight: 600; font-size: 1rem; line-height: 1.3;
+  text-transform: uppercase; letter-spacing: .08em;
+  padding: 18px 24px; border-radius: 2px; min-height: 60px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+}
+.btn-primary { background: var(--action); color: var(--action-fg); }
+.btn:hover { filter: brightness(1.06); }
+.btn-ghost:hover { border-color: var(--slate); filter: none; }
+.btn-light { background: var(--action); color: var(--action-fg); }
+.btn-ghost { background: var(--surface); color: var(--fg); border: 2px solid var(--line); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn-row .btn { flex: 1 1 220px; }
+
+.marc { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+.marc .phone { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; user-select: all; }
+.marc .fine { font-size: 0.85rem; color: var(--muted); }
+
+.back { align-self: flex-start; font-size: 1rem; }
+
+/* Topic pages */
+.short { background: var(--tint); border-left: 6px solid var(--orange); border-radius: 0 14px 14px 0; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+.prose { display: flex; flex-direction: column; gap: 16px; }
+.prose ul, .prose ol { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; }
+.example { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+.figs { display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; font-variant-numeric: tabular-nums; }
+.figs dt { margin: 0; } .figs dd { margin: 0; text-align: right; font-weight: 700; }
+.figs .total { border-top: 1px solid var(--line); padding-top: 6px; }
+.related { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { text-decoration: none; background: var(--surface); border: 2px solid var(--line); color: var(--fg); border-radius: 2px; padding: 10px 16px; font-size: 1rem; font-weight: 700; }
+
+/* Request card */
+.request { background: var(--surface); border: 2px solid var(--orange); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+.choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.choice { position: relative; }
+.choice input { position: absolute; opacity: 0; inset: 0; }
+.choice label { display: block; border: 2px solid var(--line); border-radius: 4px; padding: 14px 16px; font-weight: 700; cursor: pointer; background: var(--bg); }
+.choice input:checked + label { border-color: var(--orange); background: var(--tint); }
+.choice input:focus-visible + label { outline: 3px solid var(--orange); outline-offset: 2px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-weight: 700; font-size: 1rem; }
+.field input { font: inherit; font-size: 1.1rem; padding: 14px 14px; border-radius: 10px; border: 2px solid var(--line); background: var(--bg); color: var(--fg); width: 100%; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.done { background: var(--ok-bg); color: var(--ok-fg); border-radius: 12px; padding: 16px 18px; font-weight: 700; }
+
+/* Part 2 comparison */
+.compare { display: flex; flex-direction: column; gap: 14px; }
+.cmp { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+.cmp dl { margin: 0; display: grid; grid-template-columns: 9.5em 1fr; gap: 6px 14px; }
+.cmp dt { color: var(--muted); font-size: 0.95rem; } .cmp dd { margin: 0; font-weight: 700; }
+@media (max-width: 520px) {
+  body { font-size: 19px; }
+  h1 { font-size: 1.8rem; }
+  .brand .by { display: none; }
+  .cmp dl { grid-template-columns: 1fr; gap: 0; } .cmp dd { margin-bottom: 8px; }
+  .call-top small { display: none; }
+}
+
+footer.site { max-width: 760px; margin: 40px auto 0; font-size: 0.8rem; color: var(--muted); display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--line); padding-top: 16px; }
+
+/* Marc's alert drawer (preview only) */
+.alerts-btn {
+  position: fixed; z-index: 20;
+  right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  background: var(--preview-bg); color: var(--preview-fg); border: 0; border-radius: 999px;
+  padding: 12px 18px; font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0,0,0,.25); display: flex; gap: 8px; align-items: center;
+}
+.alerts-btn .count { background: var(--orange); color: #FFFFFF; border-radius: 999px; min-width: 24px; padding: 0 7px; text-align: center; }
+.alerts {
+  position: fixed; z-index: 21;
+  right: calc(16px + env(safe-area-inset-right, 0px)); left: calc(16px + env(safe-area-inset-left, 0px));
+  bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  max-width: 420px; margin-left: auto; max-height: 60vh; overflow: auto;
+  background: var(--preview-bg); color: var(--preview-fg); border-radius: 16px; padding: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.35); font-size: 0.85rem; line-height: 1.45;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.alerts[hidden] { display: none; }
+.alerts h3 { color: var(--preview-fg); font-size: 1rem; }
+.alerts .sub { opacity: .75; }
+.alert { background: rgba(255,255,255,.08); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; }
+.alert .t { opacity: .7; font-size: 0.75rem; }
+.alert.hot { border-left: 4px solid var(--orange); }
+@media (prefers-reduced-motion: no-preference) { .alert { animation: pop .25s ease-out; } @keyframes pop { from { transform: translateY(6px); } to { transform: none; } } }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a class="logo" href="#part-1" aria-label="Your Home, Your Options home"><img alt="hb.homes" src="/logo.png"></a>
+  <div class="brand">
+    <div class="name">Your Home, Your Options</div>
+    <div class="by">Marc Samulewicz · Seven Gables Real Estate</div>
+  </div>
+  <a class="call-top" href="tel:+17148877266">Call Marc<small>(714) 887-7266</small></a>
+</header>
+<nav class="hbnav" aria-label="hb.homes">
+  <a href="#part-1" aria-current="page">The guide</a>
+  <a href="https://search.hb.homes/" target="_blank" rel="noopener">Search homes</a>
+  <a href="https://search.hb.homes/seller" target="_blank" rel="noopener">Free home value</a>
+  <a href="https://www.hb.homes/team/marc-samulewicz" target="_blank" rel="noopener">About Marc</a>
+  <a href="https://www.hb.homes/contact" target="_blank" rel="noopener">Contact</a>
+</nav>
+
+<main>
+
+<!-- ============ PART 1 ============ -->
+<section class="view" id="v-part-1" data-title="Part 1: Five paths">
+  <div class="intro">
+    <div>
+      <div class="eyebrow">Part 1 of 5</div>
+      <div class="progress" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+    </div>
+    <h1>Five paths long-time Huntington Beach owners consider</h1>
+    <p class="lede">After many years in the same home, the question “What’s next?” can feel big. There is no single right answer, and nothing here asks you to decide anything.</p>
+  </div>
+
+  <div class="reassure">
+    <p><b>How to use this guide</b></p>
+    <p class="tip"><span>Words like <span class="sample">this</span> open a short, plain-English explanation. Tap one any time. You can always come back.</span></p>
+  </div>
+
+  <div class="paths">
+    <article class="path">
+      <div class="path-head"><div class="path-num">1</div><h2>Stay and age in place</h2></div>
+      <p><span class="label">May fit if</span>You love your home and neighborhood, it suits you physically, and you want to keep your low property tax base.</p>
+      <p><span class="label">Things to weigh</span>Upkeep and repairs on an older home, stairs and bathroom safety, yard work, and having help nearby. Simple changes like grab bars, better lighting, or a first-floor bedroom can make a big difference. The Huntington Beach Senior Center in Central Park offers care management and referrals at (714) 536-5600.</p>
+    </article>
+
+    <article class="path">
+      <div class="path-head"><div class="path-num">2</div><h2>Sell and buy something smaller nearby</h2></div>
+      <p><span class="label">May fit if</span>You would like single-level living, less maintenance, or a lock-and-leave home, while staying close to friends, doctors, and routines.</p>
+      <p><span class="label">Things to weigh</span><a class="term" href="#part-4">Capital gains</a> on the sale, HOA dues and rules, and moving logistics. <a class="term" href="#part-3">Proposition 19</a> can let you bring your current property tax base with you if you are 55 or older.</p>
+      <a class="hb-link" href="https://search.hb.homes/" target="_blank" rel="noopener"><span>Browse homes for sale near you</span><span class="go">hb.homes ›</span></a>
+    </article>
+
+    <article class="path">
+      <div class="path-head"><div class="path-num">3</div><h2>Sell and rent</h2></div>
+      <p><span class="label">May fit if</span>You want flexibility, to be near family, or to try a new area before committing.</p>
+      <p><span class="label">Things to weigh</span>Rent increases over time, giving up the Prop 19 benefit if you don’t buy within two years of selling, and capital gains on the sale.</p>
+    </article>
+
+    <article class="path">
+      <div class="path-head"><div class="path-num">4</div><h2>Keep the home for your heirs</h2></div>
+      <p><span class="label">May fit if</span>Leaving the home to family matters to you and someone may want to live in it.</p>
+      <p><span class="label">Things to weigh</span>Heirs generally receive a <a class="term" href="#step-up">“step-up” in basis</a> that can erase most capital gains, but under Prop 19 <a class="term" href="#prop-19-heirs">their property tax may rise sharply</a> unless a child moves in. <a class="term" href="#living-trust">A living trust</a> can avoid probate.</p>
+    </article>
+
+    <article class="path">
+      <div class="path-head"><div class="path-num">5</div><h2>Stay and draw on your equity</h2></div>
+      <p><span class="label">May fit if</span>You want to remain at home but would like more monthly cash flow.</p>
+      <p><span class="label">Things to weigh</span>A federally insured <a class="term" href="#reverse-mortgage">reverse mortgage (HECM)</a> is available at 62 and older. For 2026, FHA counts home value up to $1,249,125 when calculating how much you can access. Costs include an upfront insurance premium (2% of that value), you must keep paying property taxes, insurance, and upkeep, and HUD-approved counseling is required first.</p>
+    </article>
+  </div>
+
+  <div class="teaser">
+    <div class="eyebrow">Coming up in Part 2</div>
+    <h2>Side by side: what each path means for your taxes and your family</h2>
+    <ul>
+      <li>Which paths keep your property tax low</li>
+      <li>When capital gains come due, and when they don’t</li>
+      <li>What your heirs receive under each choice</li>
+    </ul>
+    <div class="btn-row"><a class="btn btn-light" href="#part-2">Continue to Part 2</a></div>
+  </div>
+
+  <div data-marc></div>
+</section>
+
+<!-- ============ PART 2 ============ -->
+<section class="view" id="v-part-2" data-title="Part 2: Side by side" hidden>
+  <a class="back btn btn-ghost" href="#part-1">‹ Back to Part 1</a>
+  <div class="intro">
+    <div>
+      <div class="eyebrow">Part 2 of 5</div>
+      <div class="progress" aria-hidden="true"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+    </div>
+    <h1>Side by side</h1>
+    <p class="lede">The same five paths, compared on the three things that matter most: property tax, capital gains, and what your family receives.</p>
+  </div>
+  <div class="compare">
+    <div class="cmp"><h3>Stay</h3><dl><dt>Property tax</dt><dd>Stays low</dd><dt>Capital gains</dt><dd>None now</dd><dt>For heirs</dt><dd><a class="term" href="#step-up">Step-up</a>; <a class="term" href="#prop-19-heirs">Prop 19 limits</a> apply</dd></dl></div>
+    <div class="cmp"><h3>Sell &amp; buy smaller</h3><dl><dt>Property tax</dt><dd>Can stay low with Prop 19 (55+)</dd><dt>Capital gains</dt><dd>Due on gain above exclusion</dd><dt>For heirs</dt><dd>Smaller home to pass on</dd></dl></div>
+    <div class="cmp"><h3>Sell &amp; rent</h3><dl><dt>Property tax</dt><dd>None (renting)</dd><dt>Capital gains</dt><dd>Due on gain above exclusion</dd><dt>For heirs</dt><dd>Cash, not a home</dd></dl></div>
+    <div class="cmp"><h3>Keep for heirs</h3><dl><dt>Property tax</dt><dd>Stays low for you</dd><dt>Capital gains</dt><dd>None now</dd><dt>For heirs</dt><dd><a class="term" href="#step-up">Step-up</a>; <a class="term" href="#prop-19-heirs">Prop 19 limits</a> apply</dd></dl></div>
+    <div class="cmp"><h3>Reverse mortgage</h3><dl><dt>Property tax</dt><dd>Stays low</dd><dt>Capital gains</dt><dd>None now</dd><dt>For heirs</dt><dd>Loan repaid from the home’s value</dd></dl></div>
+  </div>
+  <div class="teaser">
+    <div class="eyebrow">Coming up in Part 3</div>
+    <h2>Proposition 19: your low tax base can move with you</h2>
+    <ul>
+      <li>Who qualifies at 55 and older</li>
+      <li>The two-year window, before or after you sell</li>
+      <li>What happens if the new home costs more</li>
+    </ul>
+    <div class="btn-row"><a class="btn btn-light" href="#part-3">Continue to Part 3</a></div>
+  </div>
+  <div data-marc></div>
+</section>
+
+<!-- ============ PART 3 ============ -->
+<section class="view" id="v-part-3" data-title="Part 3: Proposition 19" hidden>
+  <a class="back btn btn-ghost" href="#part-2">‹ Back to Part 2</a>
+  <div class="intro">
+    <div>
+      <div class="eyebrow">Part 3 of 5</div>
+      <div class="progress" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
+    </div>
+    <h1>Proposition 19: your tax base can move with you</h1>
+    <p class="lede">Many long-time owners stay put because they fear a much higher property tax bill on their next home. For owners 55 and older, Prop 19 often removes that worry.</p>
+  </div>
+  <div class="short">
+    <p><b>The short version</b></p>
+    <p>If you are 55 or older, you can generally carry your current taxable value to a replacement primary residence anywhere in California, up to three times, if you buy within two years before or after selling.</p>
+  </div>
+  <div class="prose">
+    <h2>Who qualifies</h2>
+    <ul>
+      <li>Homeowners <b>55 or older</b>, or severely disabled, or whose home was lost to a wildfire or disaster</li>
+      <li>The home you sell must be your <b>primary residence</b>, and so must the new one</li>
+      <li>The new home can be <b>anywhere in California</b>, in any county</li>
+      <li>You buy or build within <b>two years before or after</b> the sale</li>
+    </ul>
+    <h2>If the new home costs the same or less</h2>
+    <p>Your full low tax base comes with you. If you buy after selling, “the same or less” stretches a little: up to 105% of your sale price in the first year, and 110% in the second.</p>
+  </div>
+  <div class="example">
+    <p><b>An example</b></p>
+    <p>Your home’s taxable value is $300,000. You sell it for $1,400,000 and buy a single-level condo for $1,100,000.</p>
+    <dl class="figs">
+      <dt>Yearly tax without Prop 19, about</dt><dd>$12,650</dd>
+      <dt>Yearly tax with Prop 19, about</dt><dd>$3,450</dd>
+      <dt class="total">Savings each year, about</dt><dd class="total">$9,200</dd>
+    </dl>
+    <p style="font-size:.85rem;color:var(--muted)">Illustration only, using a rate of about 1.15%. HOA dues and special assessments are separate.</p>
+  </div>
+  <a class="hb-link" href="https://search.hb.homes/" target="_blank" rel="noopener"><span>See single-level homes and condos for sale in Huntington Beach</span><span class="go">hb.homes ›</span></a>
+  <div class="prose">
+    <h2>If the new home costs more</h2>
+    <p>You still benefit. The difference in price is added to your old tax base. In the example, a $1,600,000 home would be taxed on $300,000 + $200,000 = $500,000, not on $1,600,000.</p>
+    <h2>Don’t miss the paperwork</h2>
+    <p>The benefit is not automatic. You file a claim with the Orange County Assessor (form BOE-19-B), generally within three years of buying. Official details are at <a href="https://www.boe.ca.gov/prop19/" target="_blank" rel="noopener">boe.ca.gov/prop19</a>.</p>
+  </div>
+  <div class="related"><a class="chip" href="#prop-19-heirs">Prop 19 for heirs ›</a><a class="chip" href="#second-property">If you own a second property ›</a></div>
+  <div class="teaser">
+    <div class="eyebrow">Coming up in Part 4</div>
+    <h2>Capital gains: know your number before you sell</h2>
+    <ul>
+      <li>The $250,000 and $500,000 exclusions</li>
+      <li>How records of old improvements lower your tax</li>
+      <li>A special rule for surviving spouses</li>
+    </ul>
+    <div class="btn-row"><a class="btn btn-light" href="#part-4">Continue to Part 4</a></div>
+  </div>
+  <div data-marc></div>
+</section>
+
+<!-- ============ PART 4 ============ -->
+<section class="view" id="v-part-4" data-title="Part 4: Capital gains" hidden>
+  <a class="back btn btn-ghost" href="#part-3">‹ Back to Part 3</a>
+  <div class="intro">
+    <div>
+      <div class="eyebrow">Part 4 of 5</div>
+      <div class="progress" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+    </div>
+    <h1>Capital gains: know your number before you sell</h1>
+    <p class="lede">After decades in Huntington Beach, your home has likely grown in value far more than you paid. Knowing your number ahead of time takes the surprise out of selling.</p>
+  </div>
+  <div class="short">
+    <p><b>The short version</b></p>
+    <p>You can exclude up to $250,000 of gain from tax, or $500,000 for qualifying married couples filing jointly. Long-time owners often have gains far above that. Records of improvements you’ve made can lower your taxable gain dollar for dollar.</p>
+  </div>
+  <div class="prose">
+    <h2>How your gain is figured</h2>
+  </div>
+  <div class="example">
+    <dl class="figs">
+      <dt>Sale price</dt><dd>$1,400,000</dd>
+      <dt>Less selling costs</dt><dd>−$70,000</dd>
+      <dt>Less what you paid in 1985</dt><dd>−$180,000</dd>
+      <dt>Less <a class="term" href="#improvements">improvements you made</a></dt><dd>−$120,000</dd>
+      <dt class="total">Your gain</dt><dd class="total">$1,030,000</dd>
+      <dt>Less exclusion (married)</dt><dd>−$500,000</dd>
+      <dt class="total">Gain that may be taxed</dt><dd class="total">$530,000</dd>
+    </dl>
+    <p style="font-size:.85rem;color:var(--muted)">Illustration only. Your CPA can run your real numbers.</p>
+  </div>
+  <a class="hb-link" href="https://search.hb.homes/seller" target="_blank" rel="noopener"><span>What would your home sell for today? Get a free home value analysis</span><span class="go">hb.homes ›</span></a>
+  <div class="prose">
+    <h2>Things to know</h2>
+    <ul>
+      <li><b>To use the exclusion</b>, you generally must have owned the home and lived in it for at least two of the last five years.</li>
+      <li><b>California taxes the gain too</b>, as regular income. Together, federal and state tax can take a meaningful share of the taxable gain.</li>
+      <li><b>Surviving spouses</b> can usually still use the full $500,000 exclusion if they sell within two years of a spouse’s passing. The <a class="term" href="#step-up">step-up</a> may also apply to the home.</li>
+      <li><b>A second home or rental</b> follows different rules. <a class="term" href="#second-property">See what changes</a>.</li>
+    </ul>
+  </div>
+  <div class="related"><a class="chip" href="#improvements">What counts as an improvement ›</a><a class="chip" href="#second-property">If you own a second property ›</a></div>
+  <div class="teaser">
+    <div class="eyebrow">Coming up in Part 5</div>
+    <h2>Passing your home to family, and your next steps</h2>
+    <ul>
+      <li>Why gifting your home now can cost your children</li>
+      <li>The property tax catch for heirs</li>
+      <li>The three documents to gather before deciding anything</li>
+    </ul>
+    <div class="btn-row"><a class="btn btn-light" href="#part-5">Continue to Part 5</a></div>
+  </div>
+  <div data-marc></div>
+</section>
+
+<!-- ============ PART 5 ============ -->
+<section class="view" id="v-part-5" data-title="Part 5: Family and next steps" hidden>
+  <a class="back btn btn-ghost" href="#part-4">‹ Back to Part 4</a>
+  <div class="intro">
+    <div>
+      <div class="eyebrow">Part 5 of 5</div>
+      <div class="progress" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+    </div>
+    <h1>Passing your home to family, and your next steps</h1>
+  </div>
+  <div class="short">
+    <p><b>The short version</b></p>
+    <p>Heirs usually inherit at today’s value, which can eliminate decades of capital gains. Gifting the home during life generally loses that benefit. Under Prop 19, heirs keep your low property tax only if a child moves in, and only up to a limit.</p>
+  </div>
+  <div class="prose">
+    <h2>Three things to understand</h2>
+    <ul>
+      <li><a class="term" href="#step-up">The step-up in basis</a> can save your heirs a large capital gains bill.</li>
+      <li><a class="term" href="#prop-19-heirs">Prop 19 for heirs</a> can raise their property tax sharply if no child moves in.</li>
+      <li><a class="term" href="#living-trust">A living trust</a> can keep your home out of probate court.</li>
+    </ul>
+  </div>
+  <div class="example">
+    <h2>A gentle suggestion</h2>
+    <p>Before deciding anything, gather three things. With them in hand, a CPA, an estate attorney, and a local Realtor can each give you real numbers instead of guesses.</p>
+    <div class="choices" style="grid-template-columns:1fr">
+      <div class="choice"><input type="checkbox" id="g1"><label for="g1">My most recent property tax bill</label></div>
+      <div class="choice"><input type="checkbox" id="g2"><label for="g2">My purchase documents and improvement records</label></div>
+      <div class="choice"><input type="checkbox" id="g3"><label for="g3">Any trust or will</label></div>
+    </div>
+  </div>
+  <div class="prose">
+    <h2>Helpful local and official resources</h2>
+    <ul>
+      <li><b>Huntington Beach Senior Center in Central Park:</b> 18041 Goldenwest St., (714) 536-5600. Classes, transportation, and care management.</li>
+      <li><b>California State Board of Equalization:</b> <a href="https://www.boe.ca.gov/prop19/" target="_blank" rel="noopener">boe.ca.gov/prop19</a> for official Proposition 19 information.</li>
+      <li><b>Orange County Assessor:</b> questions about your taxable value and Prop 19 filings.</li>
+      <li><b>HUD-approved housing counselors:</b> required before any reverse mortgage; find one at <a href="https://www.hud.gov" target="_blank" rel="noopener">hud.gov</a>.</li>
+    </ul>
+    <h2>About Marc</h2>
+    <p>I’m Marc Samulewicz, a Realtor with Seven Gables Real Estate and the founder of hb.homes. I live and work in Huntington Beach, and much of my work is helping neighbors who have owned their homes for many years understand their choices, whether that means moving, staying, or simply planning ahead.</p>
+  </div>
+  <a class="hb-link" href="https://www.hb.homes/team/marc-samulewicz" target="_blank" rel="noopener"><span>More about Marc</span><span class="go">hb.homes ›</span></a>
+  <a class="hb-link" href="https://www.hb.homes/testimonials" target="_blank" rel="noopener"><span>What Huntington Beach neighbors say about working with Marc</span><span class="go">hb.homes ›</span></a>
+  <div data-request="next-steps" data-topic="my own situation" data-intro="I’m happy to sit down with you, at your home or by phone, and help you put real numbers to your options. No obligation."></div>
+  <div data-marc></div>
+</section>
+
+<!-- ============ TOPIC: IMPROVEMENTS ============ -->
+<section class="view" id="v-improvements" data-title="Topic: Improvement records" hidden>
+  <a class="back btn btn-ghost" href="#part-4">‹ Back to Part 4</a>
+  <div class="intro">
+    <div class="eyebrow">Capital gains</div>
+    <h1>What counts as an improvement</h1>
+  </div>
+  <div class="short">
+    <p><b>The short version</b></p>
+    <p>Money you spent making your home better, bigger, or longer-lasting is added to what you paid for it. That lowers your taxable gain dollar for dollar. Everyday repairs don’t count.</p>
+  </div>
+  <div class="prose">
+    <h2>Usually counts</h2>
+    <ul>
+      <li>Room additions, a remodeled kitchen or bathroom</li>
+      <li>A new roof, windows, or heating and air conditioning</li>
+      <li>A pool, patio, block wall, or landscaping project</li>
+      <li>Solar panels, new plumbing or electrical, a garage conversion</li>
+    </ul>
+    <h2>Usually does not count</h2>
+    <ul>
+      <li>Painting, fixing a leak, or replacing a broken part</li>
+      <li>Routine upkeep and cleaning</li>
+    </ul>
+    <h2>Missing old receipts?</h2>
+    <p>That is common after many years. City permit records, old photos, bank statements, and contractor names can help your CPA rebuild the list. Start gathering now, well before you sell.</p>
+  </div>
+  <div data-request="improvements" data-topic="tracking my improvements"></div>
+  <div data-marc></div>
+</section>
+
+<!-- ============ TOPIC: SECOND PROPERTY ============ -->
+<section class="view" id="v-second-property" data-title="Topic: Second property" hidden>
+  <a class="back btn btn-ghost" href="#part-4">‹ Back to Part 4</a>
+  <div class="intro">
+    <div class="eyebrow">If you own more than one property</div>
+    <h1>When you own a second home or rental</h1>
+  </div>
+  <div class="short">
+    <p><b>The short version</b></p>
+    <p>Many of the benefits in this guide apply only to the home you live in. A rental or second home follows different rules for capital gains, property tax, and your heirs.</p>
+  </div>
+  <div class="prose">
+    <h2>What changes</h2>
+    <ul>
+      <li><b>No $250,000 / $500,000 exclusion.</b> The full gain may be taxable when you sell.</li>
+      <li><b>Depreciation is taxed back.</b> If you claimed depreciation on a rental, part of the gain is taxed at a different rate.</li>
+      <li><b>Prop 19 doesn’t carry over.</b> Neither the move-your-tax-base rule nor the parent-child rule applies, so the property is reassessed when it passes to heirs.</li>
+      <li><b>The <a class="term" href="#step-up">step-up</a> still applies</b> when heirs inherit.</li>
+    </ul>
+    <h2>Options worth asking about</h2>
+    <ul>
+      <li>A <b>1031 exchange</b> can defer the tax by trading into another investment property.</li>
+      <li>Holding it until heirs inherit can erase the gain through the step-up.</li>
+      <li>Making sure it is in your <a class="term" href="#living-trust">living trust</a> keeps it out of probate.</li>
+    </ul>
+  </div>
+  <div data-request="second-property" data-topic="my second property"></div>
+  <div data-marc></div>
+</section>
+
+<!-- ============ TOPIC: REVERSE MORTGAGE ============ -->
+<section class="view" id="v-reverse-mortgage" data-title="Topic: Reverse mortgages" hidden>
+  <a class="back btn btn-ghost" href="#part-1">‹ Back to the five paths</a>
+  <div class="intro">
+    <div class="eyebrow">Stay and draw on your equity</div>
+    <h1>How a reverse mortgage (HECM) works</h1>
+  </div>
+  <div class="short">
+    <p><b>The short version</b></p>
+    <p>A reverse mortgage lets homeowners 62 and older turn part of their home’s value into cash, with no monthly mortgage payment. The loan is repaid when the last borrower moves out or passes away, usually from the sale of the home.</p>
+  </div>
+  <div class="prose">
+    <h2>Things to know</h2>
+    <ul>
+      <li><b>You keep the title</b> and stay in your home as long as it is your primary residence.</li>
+      <li><b>You must keep paying</b> property taxes, homeowners insurance, and upkeep.</li>
+      <li><b>Costs:</b> an upfront insurance premium of 2% of the home’s value (counted up to $1,249,125 in 2026), plus an ongoing yearly premium, interest, and closing costs.</li>
+      <li><b>Your heirs are protected.</b> They never owe more than the home is worth, and can keep the home by paying off the loan.</li>
+      <li><b>Counseling first.</b> A session with a HUD-approved counselor is required before you apply.</li>
+      <li><b>“HECM for Purchase”</b> can help you buy a new, easier home without a monthly payment.</li>
+    </ul>
+  </div>
+  <div data-request="reverse-mortgage" data-topic="reverse mortgages"></div>
+  <div data-marc></div>
+</section>
+
+<!-- ============ TOPIC: STEP-UP ============ -->
+<section class="view" id="v-step-up" data-title="Topic: Step-up in basis" hidden>
+  <a class="back btn btn-ghost" href="#part-1">‹ Back to the five paths</a>
+  <div class="intro">
+    <div class="eyebrow">Keeping the home for your heirs</div>
+    <h1>The “step-up” in basis</h1>
+  </div>
+  <div class="short">
+    <p><b>The short version</b></p>
+    <p>When your children inherit your home, the tax law generally treats them as if they bought it at its value on the day they inherit. Decades of growth in value can be wiped clean for capital gains purposes.</p>
+  </div>
+  <div class="prose">
+    <h2>An example</h2>
+  </div>
+  <div class="example">
+    <p>You bought your home in 1985 for $180,000. Today it is worth $1,400,000.</p>
+    <dl class="figs">
+      <dt>If you sell it yourself, your gain is roughly</dt><dd>$1,220,000</dd>
+      <dt>Less the $250,000 exclusion (single)</dt><dd>−$250,000</dd>
+      <dt class="total">Gain that may be taxed</dt><dd class="total">$970,000</dd>
+      <dt class="total">If your heirs inherit and sell soon after at $1,400,000</dt><dd class="total">About $0</dd>
+    </dl>
+    <p style="font-size:.85rem;color:var(--muted)">Illustration only, before improvements and selling costs. Your CPA can run your real numbers.</p>
+  </div>
+  <div class="prose">
+    <h2>Things to know</h2>
+    <ul>
+      <li><b>Giving the home away while you are living usually loses the step-up.</b> Your children would take on your original purchase price instead.</li>
+      <li><b>Married couples in California</b> may get a step-up on the whole home when the first spouse passes, if it is held as community property.</li>
+      <li><b>The step-up is about income tax, not property tax.</b> Property tax for heirs is a separate rule under <a class="term" href="#prop-19-heirs">Prop 19</a>.</li>
+    </ul>
+    <h2>Questions to bring to your CPA</h2>
+    <ol>
+      <li>What is my current basis, including improvements I have made?</li>
+      <li>How is title held, and does that affect the step-up?</li>
+      <li>Is there anything I am planning that would lose it?</li>
+    </ol>
+  </div>
+  <div class="related"><a class="chip" href="#prop-19-heirs">Prop 19 for heirs ›</a><a class="chip" href="#living-trust">Living trusts ›</a></div>
+  <div class="related"><a class="chip" href="#second-property">If you own a second property ›</a></div>
+  <div data-request="step-up" data-topic="the step-up in basis"></div>
+  <div data-marc></div>
+</section>
+
+<!-- ============ TOPIC: PROP 19 HEIRS ============ -->
+<section class="view" id="v-prop-19-heirs" data-title="Topic: Prop 19 for heirs" hidden>
+  <a class="back btn btn-ghost" href="#part-1">‹ Back to the five paths</a>
+  <div class="intro">
+    <div class="eyebrow">Keeping the home for your heirs</div>
+    <h1>Prop 19 and your heirs’ property tax</h1>
+  </div>
+  <div class="short">
+    <p><b>The short version</b></p>
+    <p>Before 2021, children could usually keep their parents’ low property tax. Now they keep it only if a child moves into the home as their main residence, and only up to a limit. Otherwise the home is reassessed at today’s value.</p>
+  </div>
+  <div class="prose">
+    <h2>What has to happen to keep the low tax</h2>
+    <ul>
+      <li>It must be <b>your family home</b>, your primary residence.</li>
+      <li>A child (or in some cases a grandchild) must <b>move in within one year</b> and file for the homeowners’ exemption.</li>
+      <li>The low value carries over only <b>up to your taxable value plus $1,044,586</b> (through February 15, 2027). Value above that is added to the tax bill.</li>
+      <li><b>Rentals and second homes</b> are reassessed when they pass to heirs.</li>
+    </ul>
+  </div>
+  <div class="example">
+    <p><b>What it can mean in dollars</b></p>
+    <p>A home with a taxable value of $250,000 pays about $2,900 a year in property tax. If heirs who don’t move in inherit it at a market value of $1,400,000, the bill can rise to about $16,000 a year.</p>
+    <p style="font-size:.85rem;color:var(--muted)">Illustration only, using a rate of about 1.15%. Actual rates and assessments vary.</p>
+  </div>
+  <div class="prose">
+    <p>Official information: <a href="https://www.boe.ca.gov/prop19/" target="_blank" rel="noopener">boe.ca.gov/prop19</a> and the Orange County Assessor.</p>
+  </div>
+  <div class="related"><a class="chip" href="#step-up">The step-up in basis ›</a><a class="chip" href="#living-trust">Living trusts ›</a></div>
+  <div data-request="prop-19-heirs" data-topic="Prop 19 and my heirs"></div>
+  <div data-marc></div>
+</section>
+
+<!-- ============ TOPIC: LIVING TRUST ============ -->
+<section class="view" id="v-living-trust" data-title="Topic: Living trusts" hidden>
+  <a class="back btn btn-ghost" href="#part-1">‹ Back to the five paths</a>
+  <div class="intro">
+    <div class="eyebrow">Keeping the home for your heirs</div>
+    <h1>Living trusts and avoiding probate</h1>
+  </div>
+  <div class="short">
+    <p><b>The short version</b></p>
+    <p>A living trust holds your home while you are alive, and you stay in full control. When you pass, the person you chose hands it to your family directly, without going through probate court.</p>
+  </div>
+  <div class="prose">
+    <h2>Why probate matters in California</h2>
+    <ul>
+      <li><b>It takes time.</b> Probate often runs a year or more, and the home can be tied up while it does.</li>
+      <li><b>It is public.</b> Court filings can be seen by anyone.</li>
+      <li><b>Fees are set by state law</b> and based on the home’s full value, with no reduction for a mortgage.</li>
+    </ul>
+  </div>
+  <div class="example">
+    <p><b>California statutory probate fees on a $1,000,000 estate</b></p>
+    <dl class="figs">
+      <dt>Attorney</dt><dd>$23,000</dd>
+      <dt>Executor</dt><dd>$23,000</dd>
+      <dt class="total">Total, before court costs</dt><dd class="total">$46,000</dd>
+    </dl>
+  </div>
+  <div class="prose">
+    <h2>Things to know</h2>
+    <ul>
+      <li>A trust only helps if the home is actually <b>titled in the trust’s name</b>. Many people sign a trust and never move the deed into it.</li>
+      <li>If you own more than one property, <b>each one</b> needs to be in the trust.</li>
+      <li>Putting your home in your own living trust generally does not change your property tax or the step-up.</li>
+    </ul>
+    <h2>What to have ready for an estate attorney</h2>
+    <ol>
+      <li>Your most recent property tax bill for each property</li>
+      <li>Your grant deed, or how title is currently held</li>
+      <li>Any existing will or trust, even an old one</li>
+    </ol>
+  </div>
+  <div class="related"><a class="chip" href="#step-up">The step-up in basis ›</a><a class="chip" href="#prop-19-heirs">Prop 19 for heirs ›</a></div>
+  <div data-request="living-trust" data-topic="living trusts" data-intro="I work with a trusted Huntington Beach estate planning attorney and can introduce you, with no cost or obligation."></div>
+  <div data-marc></div>
+</section>
+
+</main>
+
+<footer class="site">
+  <span>Marc Samulewicz, Realtor® · Seven Gables Real Estate · DRE #02336405 · YourOptions.homes · <a href="https://hb.homes" target="_blank" rel="noopener">hb.homes</a></span>
+  <span><a href="https://www.hb.homes/team/marc-samulewicz" target="_blank" rel="noopener">About Marc</a> · <a href="https://www.hb.homes/contact" target="_blank" rel="noopener">Contact</a> · <a href="https://search.hb.homes/privacy-policy" target="_blank" rel="noopener">Privacy policy</a></span>
+  <span>This guide is general information, not tax or legal advice. Please confirm your situation with a CPA or attorney.</span>
+</footer>
+
+<template id="tpl-marc">
+  <div class="marc">
+    <h2>Questions? Talk it through with Marc.</h2>
+    <p>No obligation. You are welcome to have a family member, CPA, or attorney join us.</p>
+    <div class="phone">(714) 887-7266</div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="tel:+17148877266">Call Marc now</a>
+      <button class="btn btn-ghost" type="button" data-callback>Have Marc call me</button>
+    </div>
+    <p class="fine">Prefer email? <a href="mailto:marc@hb.homes">marc@hb.homes</a> · Visit <a href="https://www.hb.homes" target="_blank" rel="noopener">hb.homes</a></p>
+  </div>
+</template>
+
+
+<script>
+(function () {
+  var views = ["part-1", "part-2", "part-3", "part-4", "part-5", "step-up", "prop-19-heirs", "living-trust", "improvements", "second-property", "reverse-mortgage"];
+
+  // --- Visitor memory (this device only) ---
+  function load(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
+  function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+  var params = new URLSearchParams(location.search);
+  // Personal links: youroptions.homes/?p=<Follow Up Boss person id>  •  campaign codes: ?c=<mailer code>
+  if (params.get("p")) save("yo_person", params.get("p"));
+  if (params.get("c")) save("yo_campaign", params.get("c"));
+  var person = load("yo_person", null);
+  var campaign = load("yo_campaign", null);
+  var history = load("yo_history", []);
+  var visitorName = load("yo_name", "");
+
+  function track(type, data) {
+    var body = Object.assign({ type: type, person: person, campaign: campaign, history: history.slice(-25) }, data || {});
+    try {
+      fetch("/api/track", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), keepalive: true });
+    } catch (e) {}
+  }
+
+  // --- Marc contact card in every view ---
+  var tpl = document.getElementById("tpl-marc");
+  document.querySelectorAll("[data-marc]").forEach(function (slot) { slot.appendChild(tpl.content.cloneNode(true)); });
+
+  // --- "Send me more information" cards ---
+  var n = 0;
+  document.querySelectorAll("[data-request]").forEach(function (slot) {
+    n++;
+    var topic = slot.getAttribute("data-topic");
+    var intro = slot.getAttribute("data-intro") || "";
+    var id = "r" + n;
+    slot.innerHTML =
+      '<form class="request" novalidate>' +
+        '<h2>Send me more information about ' + topic + '</h2>' +
+        (intro ? '<p>' + intro + '</p>' : '') +
+        '<fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px"><legend style="font-weight:700;margin-bottom:10px">How would you like it?</legend>' +
+          '<div class="choices">' +
+            '<div class="choice"><input type="radio" name="how-' + id + '" id="' + id + '-mail" value="mail" checked><label for="' + id + '-mail">Mail it to me</label></div>' +
+            '<div class="choice"><input type="radio" name="how-' + id + '" id="' + id + '-call" value="phone call"><label for="' + id + '-call">Call me</label></div>' +
+            '<div class="choice"><input type="radio" name="how-' + id + '" id="' + id + '-email" value="email"><label for="' + id + '-email">Email me</label></div>' +
+          '</div>' +
+        '</fieldset>' +
+        '<div class="fields">' +
+          '<div class="field"><label for="' + id + '-name">Your name</label><input id="' + id + '-name" autocomplete="name"></div>' +
+          '<div class="field"><label for="' + id + '-contact">Phone, email, or street address</label><input id="' + id + '-contact"></div>' +
+        '</div>' +
+        '<p class="err" hidden style="color:var(--action);font-weight:700">Please add your name and a phone number, email, or address so Marc can reach you.</p>' +
+        '<button class="btn btn-primary" type="submit">Send me more information</button>' +
+        '<div class="done" hidden>Thank you. Marc will follow up with you personally.</div>' +
+      '</form>';
+    var form = slot.querySelector("form");
+    var nameEl = form.querySelector("#" + id + "-name");
+    if (visitorName) nameEl.value = visitorName;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = nameEl.value.trim();
+      var contact = form.querySelector("#" + id + "-contact").value.trim();
+      var how = form.querySelector('input[name="how-' + id + '"]:checked').value;
+      if (!name || !contact) { form.querySelector(".err").hidden = false; return; }
+      form.querySelector(".err").hidden = true;
+      visitorName = name; save("yo_name", name);
+      track("request", { topic: topic, how: how, name: name, contact: contact, page: currentTitle() });
+      form.querySelector(".done").hidden = false;
+      form.querySelector('button[type="submit"]').hidden = true;
+    });
+  });
+
+  // --- "Have Marc call me" ---
+  document.addEventListener("click", function (e) {
+    var cb = e.target.closest("[data-callback]");
+    if (!cb) return;
+    var box = cb.closest(".marc");
+    var form = box.querySelector(".callback-form");
+    if (!form) {
+      form = document.createElement("form");
+      form.className = "callback-form";
+      form.setAttribute("novalidate", "");
+      form.style.cssText = "display:flex;flex-direction:column;gap:12px";
+      var uid = "cb" + Math.random().toString(36).slice(2, 7);
+      form.innerHTML =
+        '<div class="fields">' +
+          '<div class="field"><label for="' + uid + '-n">Your name</label><input id="' + uid + '-n" autocomplete="name"></div>' +
+          '<div class="field"><label for="' + uid + '-p">Best phone number</label><input id="' + uid + '-p" type="tel" autocomplete="tel"></div>' +
+        '</div>' +
+        '<button class="btn btn-primary" type="submit">Please call me</button>' +
+        '<div class="done" hidden>Thank you. Marc will call you.</div>';
+      box.appendChild(form);
+      if (visitorName) form.querySelector("#" + uid + "-n").value = visitorName;
+      form.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        var name = form.querySelector("#" + uid + "-n").value.trim();
+        var phone = form.querySelector("#" + uid + "-p").value.trim();
+        if (!name || !phone) { form.querySelector("#" + uid + (name ? "-p" : "-n")).focus(); return; }
+        visitorName = name; save("yo_name", name);
+        track("callback", { name: name, contact: phone, page: currentTitle() });
+        form.querySelector(".done").hidden = false;
+        form.querySelector('button[type="submit"]').hidden = true;
+      });
+    }
+    cb.hidden = true;
+    form.querySelector("input").focus();
+  });
+
+  // --- Router ---
+  function currentId() { var h = (location.hash || "").slice(1); return views.indexOf(h) === -1 ? "part-1" : h; }
+  function currentTitle() { return document.getElementById("v-" + currentId()).getAttribute("data-title"); }
+  function show() {
+    var h = currentId();
+    views.forEach(function (v) { document.getElementById("v-" + v).hidden = v !== h; });
+    var title = currentTitle();
+    document.title = title.replace(/^Topic: /, "") + " | Your Home, Your Options";
+    if (history[history.length - 1] !== title) { history.push(title); save("yo_history", history.slice(-50)); }
+    try {
+      var sent = JSON.parse(sessionStorage.getItem("yo_sent") || "[]");
+      if (sent.indexOf(h) === -1) { sent.push(h); sessionStorage.setItem("yo_sent", JSON.stringify(sent)); track("view", { page: title }); }
+    } catch (e) { track("view", { page: title }); }
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", show);
+  show();
+})();
+</script>
+
+
+</body>
+</html>
