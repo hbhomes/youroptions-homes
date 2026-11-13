@@ -16,6 +16,7 @@ const FUB = "https://api.followupboss.com/v1";
 const SYSTEM = "YourOptionsHomes";
 const SITE = "YourOptions.homes";
 
+let yoLinkCache = null; // API name of the "YO Link" custom field, once found
 const clip = (v, n = 300) => (typeof v === "string" ? v.slice(0, n).trim() : "");
 
 function fubHeaders(key) {
@@ -83,6 +84,24 @@ export default async (req) => {
 
   const api = (path, method = "GET", body) =>
     fetch(`${FUB}${path}`, { method, headers: fubHeaders(key), ...(body ? { body: JSON.stringify(body) } : {}) });
+
+  // The API name of the "YO Link" custom field (e.g. customYOLink), looked up once per function instance.
+  const yoLinkFieldName = async () => {
+    if (yoLinkCache) return yoLinkCache;
+    try {
+      const r = await api("/customFields?limit=100");
+      if (r.ok) {
+        const body = await r.json();
+        const fields = body.customfields || body.customFields || [];
+        const f = fields.find((x) => String(x.label || "").trim().toLowerCase() === "yo link");
+        if (f) yoLinkCache = f.name;
+      } else {
+        console.error("FUB custom fields lookup failed", r.status, await r.text());
+      }
+    } catch {}
+    if (!yoLinkCache) console.error('Custom field "YO Link" not found in Follow Up Boss');
+    return yoLinkCache || null;
+  };
 
   // Find the Follow Up Boss contact an event landed on.
   const findPersonId = async (res, fields) => {
@@ -173,7 +192,11 @@ export default async (req) => {
           // Segment tag, added after the lead exists so "Tag Added" automations fire reliably.
           // New leads → the YO nurture emails. Existing contacts → no automated emails, only Marc's task.
           const segment = isNew ? "YO New Lead" : "YO Existing Contact";
-          const t = await api(`/people/${id}?mergeTags=true`, "PUT", { tags: [segment] });
+          const update = { tags: [segment] };
+          // Store their personal link in the "YO Link" custom field, so YO email templates can insert it.
+          const linkField = await yoLinkFieldName();
+          if (linkField) update[linkField] = `https://youroptions.homes/?p=${id}`;
+          const t = await api(`/people/${id}?mergeTags=true`, "PUT", update);
           if (!t.ok) console.error("FUB tag failed", t.status, await t.text());
 
           // A task for Marc on every request, saying exactly what to do.
