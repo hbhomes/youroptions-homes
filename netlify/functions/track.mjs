@@ -74,7 +74,32 @@ export default async (req) => {
       event.person = fallbackPerson;
       r = await fetch(`${FUB}/events`, { method: "POST", headers: fubHeaders(key), body: JSON.stringify(event) });
     }
-    if (!r.ok) console.error("FUB event failed", r.status, await r.text());
+    const text = await r.text();
+    if (!r.ok) console.error("FUB event failed", r.status, text);
+    let json = null;
+    try { json = text ? JSON.parse(text) : null; } catch {}
+    return { status: r.status, json, usedId: Boolean(event.person && event.person.id) };
+  };
+
+  const api = (path, method = "GET", body) =>
+    fetch(`${FUB}${path}`, { method, headers: fubHeaders(key), ...(body ? { body: JSON.stringify(body) } : {}) });
+
+  // Find the Follow Up Boss contact an event landed on.
+  const findPersonId = async (res, fields) => {
+    const j = res.json || {};
+    const direct = j.personId || (j.person && j.person.id) || (j.firstName !== undefined && j.id);
+    if (direct) return Number(direct);
+    const lookups = [];
+    if (fields.emails) lookups.push(`email=${encodeURIComponent(fields.emails[0].value)}`);
+    if (fields.phones) lookups.push(`phone=${encodeURIComponent(fields.phones[0].value)}`);
+    for (const q of lookups) {
+      const r = await api(`/people?${q}&limit=1&sort=-created`);
+      if (r.ok) {
+        const people = (await r.json()).people || [];
+        if (people[0]) return Number(people[0].id);
+      }
+    }
+    return null;
   };
 
   try {
@@ -126,7 +151,7 @@ export default async (req) => {
       // (a relative may fill in the form). If that contact no longer exists, create a new lead instead.
       const person = personId ? { id: Number(personId), tags } : newPerson;
 
-      await postEvent({
+      const res = await postEvent({
         source: SITE,
         system: SYSTEM,
         // Seller Inquiry: these are homeowners, so Follow Up Boss files them as sellers, not buyers.
@@ -138,6 +163,33 @@ export default async (req) => {
         person,
         fallbackPerson: personId ? newPerson : undefined,
       });
+
+      // 201 = Follow Up Boss created a new contact; 200 = it matched someone already in the database.
+      // 204 = the YourOptions.homes lead flow is archived, so do nothing more.
+      if (res.status === 200 || res.status === 201) {
+        const isNew = res.status === 201 && !res.usedId;
+        const id = res.usedId ? Number(personId) : await findPersonId(res, newPerson);
+        if (id) {
+          // Segment tag, added after the lead exists so "Tag Added" automations fire reliably.
+          // New leads → the YO nurture emails. Existing contacts → no automated emails, only Marc's task.
+          const segment = isNew ? "YO New lead" : "YO Existing contact";
+          const t = await api(`/people/${id}?mergeTags=true`, "PUT", { tags: [segment] });
+          if (!t.ok) console.error("FUB tag failed", t.status, await t.text());
+
+          // A task for Marc on every request, saying exactly what to do.
+          const who = isNew ? name : `${name} (EXISTING CONTACT: check their history and other automations first)`;
+          let task, taskType;
+          if (type === "callback") { task = `CALL BACK within 1 hour: ${who}`; taskType = "Call"; }
+          else if (how === "postal mail") { task = `Mail printed info on ${topic} + handwritten card: ${who}`; taskType = "Follow Up"; }
+          else if (how === "phone call") { task = `Call about ${topic}: ${who}`; taskType = "Call"; }
+          else { task = `Email info on ${topic}: ${who}`; taskType = "Email"; }
+          const due = new Date(Date.now() + (type === "callback" ? 1 : 3) * 3600 * 1000).toISOString();
+          const k = await api("/tasks", "POST", { personId: id, name: `YourOptions: ${task}`.slice(0, 250), type: taskType, dueDateTime: due });
+          if (!k.ok) console.error("FUB task failed", k.status, await k.text());
+        } else {
+          console.error("Could not find the Follow Up Boss contact for this request");
+        }
+      }
       return new Response(null, { status: 204 });
     }
 

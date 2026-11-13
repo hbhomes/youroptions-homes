@@ -22,4 +22,5 @@
 Set the environment variable `FUB_API_KEY` in Netlify (Project configuration → Environment variables), then redeploy.
 
 - **Send me more information** and **Have Marc call me** create a *Seller Inquiry* in Follow Up Boss (source `YourOptions.homes`), tagged `YourOptions.homes`, `YO Topic: …`, `YO Wants: …` and `YO Mailer: …`, with the pages the visitor read.
+- After each request the site tags the contact **YO New lead** (new to Follow Up Boss) or **YO Existing contact** (already in the database), and creates a task for Marc saying exactly what to do. Only *YO New lead* should start the YO nurture automation.
 - Visitors arriving on a personal link show up under **Website Activity** on their contact (a *Viewed Page* event per part or topic).
